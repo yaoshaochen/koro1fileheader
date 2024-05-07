@@ -2,7 +2,7 @@
   "name": "korofileheader-for-go",
   "displayName": "koroFileHeader-for-go",
   "description": "用于生成文件头部注释和函数注释的插件，支持所有主流语言,功能强大，灵活方便，文档齐全，食用简单！",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "publisher": "koro1fileheader-go",
   "scripts": {
     "build": "vsce package",
@@ -66,7 +66,12 @@
     "vscode-fileheader",
     "Document This",
     "obkoro1",
-    "koro1"
+    "koro1",
+    "生成golang注释",
+    "go注释",
+    "golang注释",
+    "golang自动注释",
+    "comment for go"
   ],
   "activationEvents": [
     "*",
