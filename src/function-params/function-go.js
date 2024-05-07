@@ -52,23 +52,24 @@ class GetParams {
   }
 
   parsing (params) {
-    let res
+    let subRes
     const paramsArr = [] // 参数列表
     // 可能的空格 匹配参数 匹配可能的参数类型 遇到逗号停下来
-    const reg = /\s*([A-Za-z_]\w*)(\s+[^,]*)?[^,]*/g
+    const reg = /(\w+(,\s+\w+)+\s+\w+|\w+\s+\w+|\w+)/g
     // 捕获函数参数
-    while ((res = reg.exec(params))) {
-      if (!res) break
-      if (res[2] !== undefined) {
-        res[2] = res[2].replace(/\s+/g, '')
-      } else {
-        res[2] = '*'
+    while ((subRes = reg.exec(params))) {
+      if (!subRes || subRes[1] === undefined || subRes[1] === '' || subRes[1] === 'undefined') break
+      // 去掉多余空格
+      subRes[1] = subRes[1].replace(/(\s)*,(\s)*/g, ',')
+      const rArr = subRes[1].split(' ')
+      // 有名参数（需要考虑连续多个参数同类型的case: (demo1, demo2, demo3 string, e error)）
+      const sameNameArr = rArr[0].split(',')
+      for (const item of sameNameArr.values()) {
+        paramsArr.push({
+          type: rArr[1],
+          param: item
+        })
       }
-      const obj = {
-        type: res[2],
-        param: res[1]
-      }
-      paramsArr.push(obj)
     }
     this.res = paramsArr
     if (paramsArr.length !== 0) {
