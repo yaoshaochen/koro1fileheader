@@ -17,11 +17,16 @@
 
 [配置](https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE) - 所有配置的详细描述的文档，用于查看详细介绍。
 
+### [V1.0.9]
+- feat: 增加支持了golang变长参数
+- feat: 增加支持了golang结构体的字段
+- feat: 增加支持了goalng指针参数
+
 ### [V1.0.8]
-- 修复了原作者版本的bug：golang入参中出现连续多个同类型的参数时，注释错误，如：func(a, b, c int)...
+- fix: 修复了原作者版本的bug：golang入参中出现连续多个同类型的参数时，注释错误，如：func(a, b, c int)...
 
 ### [V1.0.0]
-- 增加了golang返回值（多值返回）的注释（原版本不支持）
+- feat: 增加了golang返回值（多值返回）的注释（原版本不支持）
 
 ### [V0.0.1]
 - base code from [koro1FileHeader](https://github.com/OBKoro1/koro1FileHeader)

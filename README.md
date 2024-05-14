@@ -16,16 +16,64 @@
     <img alt="开源协议-MIT" src="https://img.shields.io/badge/license-MIT-blue">
 </a>
 
-### 简介
+### 写在前面
 
-!!!重要的事情说在前面
-!!!重要的事情说在前面
-!!!重要的事情说在前面
+这是我从 https://github.com/OBKoro1/koro1FileHeader 项目fork来的，这是个非常棒的项目。但因为原项目**不支持golang的多种不同场景的入参和出参**，
+比如：
+1. 不支持golang的多返回参数(这也是golang特有的)
+```go
+func() (int, string, error)
+```
+2. 不支持golang的入参-连续多个相同类型
+```go
+func (name string, age, height, weight int)
+```
+3. 不支持golang的入参-变长参数
+```go
+func (multi ...int)
+```
+4. 不支持golang的参数-结构体的字段
+```go
+type Person struct {
+    BaseInfo PersonBaseInfo
+    Phone string
+    Address string
+}
 
-这是我从 https://github.com/OBKoro1/koro1FileHeader 项目copy过来的，因为原项目不支持golang的函数返回值(多返回值)，所以copy出来自己开发了一下，所以仅针对golang
+type PersonBaseInfo struct {
+    Name string
+    Age int
+    Height int
+}
+
+func (name string) (baseInfo Person.BaseInfo, err error)
+```
+5. 不支持golang参数-指针类型
+```go
+func (ctx *gin.Context, namePrt *string, agePtr *int) (error)
+```
+
+等等...
+(以上内容其实也是我在开发过程中主要解决的case)
+
+基于以上痛点，我fork出来自己开发了一下，所以**主要针对golang**。
+
 另外，我正在努力联系原作者希望可以把我的代码提交到原仓库，希望原作者如果看到这个项目，可以和我联系，谢谢！
-我的代码仓库
-https://github.com/yaoshaochen/koro1fileheader
+[我的代码仓库](https://github.com/yaoshaochen/koro1fileheader)
+
+
+### 食用方式
+1. 下载安装vscode
+2. 搜索插件"koroFileHeader-for-go"并安装
+    ![搜索插件](./images/search-plugin.png)
+3. 配置插件
+4. 食用
+
+如果有任何问题，欢迎提issue或者联系我!
+
+(下面基本都是原项目的内容了)
+
+### 简介
 
 1. VSCode插件: 用于一键生成文件头部注释并自动更新最后编辑人和编辑时间、函数注释自动生成和参数提取。
 2. 插件可以帮助用户养成良好的编码习惯，规范整个团队风格。

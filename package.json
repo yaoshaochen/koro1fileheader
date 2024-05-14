@@ -1,8 +1,8 @@
 {
   "name": "korofileheader-for-go",
   "displayName": "koroFileHeader-for-go",
-  "description": "fork koroFileHeader代码，主要增加了针对golang的多返回参数",
-  "version": "1.0.8",
+  "description": "fork koroFileHeader代码，主要针对golang",
+  "version": "1.0.9",
   "publisher": "koro1fileheader-go",
   "scripts": {
     "build": "vsce package",
