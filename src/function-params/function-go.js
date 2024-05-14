@@ -79,7 +79,7 @@ class GetParams {
 
   parsingReturn () {
     const returnArr = [] // 返回值列表
-    const reg = /func\s+\w+\s*\([^)]*\)\s*(\([^)]*\))?\s*(\([\s\S]*\))?\s*([^{]*)/g
+    const reg = /func\s+(?:\([^)]*\))*\s?\w+\s*\([^)]*\)\s*(\([^)]*\))?\s*(\([\s\S]*\))?\s*([^{]*)/g
     // 匹配所有的返回值
     const ret = reg.exec(this.text)
     if (!ret) {

@@ -17,6 +17,9 @@
 
 [配置](https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE) - 所有配置的详细描述的文档，用于查看详细介绍。
 
+### [V1.0.10]
+- fix: case-结构体方法
+
 ### [V1.0.9]
 - feat: 增加支持了golang变长参数
 - feat: 增加支持了golang结构体的字段
