@@ -55,11 +55,12 @@ class GetParams {
     let subRes
     const paramsArr = [] // 参数列表
     // 可能的空格 匹配参数 匹配可能的参数类型 遇到逗号停下来
-    const reg = /(\w+(,\s+\w+)+\s+[\w.*]+|\w+\s+[\w.*]+|[\w.*]+)/g
+    const reg = /(\w+(,\s*\S+)+\s*[^,]+|\w+\s+[^,]+|[^,\s]+)/g
     // 捕获函数参数
     while ((subRes = reg.exec(params))) {
       if (!subRes || subRes[1] === undefined || subRes[1] === '' || subRes[1] === 'undefined') break
       // 去掉多余空格
+      console.log(subRes)
       subRes[1] = subRes[1].replace(/(\s)*,(\s)*/g, ',')
       const rArr = subRes[1].split(' ')
       // 有名参数（需要考虑连续多个参数同类型的case: (demo1, demo2, demo3 string, e error)）
@@ -100,7 +101,8 @@ class GetParams {
     }
     // 匹配每个返回参数及其类型
     let subRes
-    const subReg = /(\w+(,\s+\w+)+\s+[\w.*]+|\w+\s+[\w.*]+|[\w.*]+)/g
+    // TODO ... 1. c, d chan int 2. xxx) (a, b int)
+    const subReg = /(\w+(,\s*\S+)+\s*[^,]+|\w+\s+[^,]+|[^,\s]+)/g
     while ((subRes = subReg.exec(bracketRet))) {
       if (!subRes || subRes[1] === undefined || subRes[1] === '' || subRes[1] === 'undefined') break
       // 去掉多余空格
