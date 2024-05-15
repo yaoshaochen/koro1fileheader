@@ -86,8 +86,7 @@ class GetParams {
 
   parsingReturn () {
     const returnArr = [] // 返回值列表
-    // const reg = /func\s+(?:\([^)]*\))*\s?\w+\s*\([^)]*\)\s*(\([^)]*\))?\s*(\([\s\S]*\))?\s*([^{]*)/g
-    const reg = /func(?:(?:\([^)]*\))|\s+)\w+\s*\([^\)]*\)\s*(?:\((.+)\)\s+\{|(.*)\{)/g
+    const reg = /func(?:(?:\s*\([^)]*\))|\s+)\s*\w+\s*\([^\)]*\)\s*(?:\((.+)\)\s+\{|(.*)\{)/g
     // 匹配所有的返回值
     const ret = reg.exec(this.text)
     if (!ret) {
@@ -108,8 +107,7 @@ class GetParams {
     }
     // 匹配每个返回参数及其类型
     let subRes
-    // TODO ... 1. c, d chan int 2. xxx) (a, b int)
-    const subReg = /(\w+(,\s*\S+)+\s*[^,]+|\w+\s+[^,]+|[^,\s]+)/g
+    const subReg = /(\w+(\s*,\s*\S+)+\s+[^,]+|\w+\s+[^,]+|[^,\s]+)/g
     while ((subRes = subReg.exec(bracketRet))) {
       if (!subRes || subRes[1] === undefined || subRes[1] === '' || subRes[1] === 'undefined') break
       // 去掉多余空格
