@@ -18,8 +18,9 @@
 
 ### 写在前面
 
-这是我从 https://github.com/OBKoro1/koro1FileHeader 项目fork来的，这是个非常棒的项目。但因为原项目**不支持golang的多种不同场景的入参和出参**，
-比如：
+这是我从 https://github.com/OBKoro1/koro1FileHeader 项目fork来的，这是个非常棒的项目。但因为原项目**不支持golang的多种不同场景的入参和出参(这些内容其实也是我在开发过程中主要解决的case)**，基于以下这些不支持的场景，我fork出来自己开发了一下，所以**主要针对golang**。
+
+包括不限于：
 1. 不支持golang的多返回参数(这也是golang特有的)
 ```go
 func() (int, string, error)
@@ -52,11 +53,11 @@ func (name string) (baseInfo Person.BaseInfo, err error)
 ```go
 func (ctx *gin.Context, namePrt *string, agePtr *int) (error)
 ```
-
-等等...
-(以上内容其实也是我在开发过程中主要解决的case)
-
-基于以上痛点，我fork出来自己开发了一下，所以**主要针对golang**。
+6. 不支持golang参数-切片类型
+```go
+func (ctx *gin.Context, sli []string, multiSli [][]string) (error)
+```
+等等
 
 另外，我正在努力联系原作者希望可以把我的代码提交到原仓库，希望原作者如果看到这个项目，可以和我联系，谢谢！
 [我的代码仓库](https://github.com/yaoshaochen/koro1fileheader)

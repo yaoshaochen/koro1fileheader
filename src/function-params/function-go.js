@@ -60,14 +60,20 @@ class GetParams {
     while ((subRes = reg.exec(params))) {
       if (!subRes || subRes[1] === undefined || subRes[1] === '' || subRes[1] === 'undefined') break
       // 去掉多余空格
-      console.log(subRes)
       subRes[1] = subRes[1].replace(/(\s)*,(\s)*/g, ',')
       const rArr = subRes[1].split(' ')
       // 有名参数（需要考虑连续多个参数同类型的case: (demo1, demo2, demo3 string, e error)）
       const sameNameArr = rArr[0].split(',')
+      let paramFullName = ''
+      rArr.forEach((item, index) => {
+        if (index > 0) {
+            paramFullName += item + ' '
+        }
+      });
+      paramFullName = paramFullName.trim()
       for (const item of sameNameArr.values()) {
         paramsArr.push({
-          type: rArr[1],
+          type: paramFullName,
           param: item
         })
       }
@@ -80,7 +86,8 @@ class GetParams {
 
   parsingReturn () {
     const returnArr = [] // 返回值列表
-    const reg = /func\s+(?:\([^)]*\))*\s?\w+\s*\([^)]*\)\s*(\([^)]*\))?\s*(\([\s\S]*\))?\s*([^{]*)/g
+    // const reg = /func\s+(?:\([^)]*\))*\s?\w+\s*\([^)]*\)\s*(\([^)]*\))?\s*(\([\s\S]*\))?\s*([^{]*)/g
+    const reg = /func(?:(?:\([^)]*\))|\s+)\w+\s*\([^\)]*\)\s*(?:\((.+)\)\s+\{|(.*)\{)/g
     // 匹配所有的返回值
     const ret = reg.exec(this.text)
     if (!ret) {
@@ -117,10 +124,17 @@ class GetParams {
         continue
       }
       // 有名参数（需要考虑连续多个参数同类型的case: (demo1, demo2, demo3 string, e error)）
+      let paramFullName = ''
+      rArr.forEach((item, index) => {
+        if (index > 0) {
+            paramFullName += item + ' '
+        }
+      });
+      paramFullName = paramFullName.trim()
       const sameNameArr = rArr[0].split(',')
       for (const item of sameNameArr.values()) {
         returnArr.push({
-          type: rArr[1],
+          type: paramFullName,
           param: item
         })
       }

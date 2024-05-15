@@ -104,11 +104,17 @@ TplJudge.prototype = {
         this.annotationSymbol = this.annotationSymbol.functionSymbol
       }
     }
+    let fnMidColon = ''
+    if (obj.key == 'Description') {
+        fnMidColon = ': '
+    } else if (this.colon.length >= 2) {
+        fnMidColon = this.colon[1];
+    }
     const userObj = {
       topMiddle: `${this.annotationSymbol.middle}${obj.key}${this.colon[0]}${obj.value}\r\n`,
       topHeadEnd: `${this.annotationSymbol.head}\r\n${obj.str}${this.annotationSymbol.end}\r\n`,
       fnMiddle_param: `${obj.str}${this.annotationSymbol.middle}${obj.key} ${obj.typeVal}\r\n`,
-      fnMiddle_key: `${obj.str}${this.annotationSymbol.middle}${obj.key}${this.colon[1]}${obj.value}\r\n`,
+      fnMiddle_key: `${obj.str}${this.annotationSymbol.middle}${obj.key}${fnMidColon}${obj.value}\r\n`,
       topHeadEnd_nextLineNo: `${obj.str}${this.annotationSymbol.head}\r\n${obj.strContent}${obj.str}${this.annotationSymbol.end}\r\n`,
       topHeadEnd_nextLineYes: `${obj.str}${this.annotationSymbol.head}\r\n${obj.strContent}${obj.str}${this.annotationSymbol.end}`,
       annotationStarts: `${this.annotationSymbol.head}`,

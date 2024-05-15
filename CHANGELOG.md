@@ -17,6 +17,11 @@
 
 [配置](https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE) - 所有配置的详细描述的文档，用于查看详细介绍。
 
+### [V1.0.11]
+- feat: 增加支持了切片类型
+- feat: 增加支持了指针类型
+- feat: 增加支持了通道类型
+
 ### [V1.0.10]
 - fix: case-结构体方法
 
