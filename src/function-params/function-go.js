@@ -55,7 +55,7 @@ class GetParams {
     let subRes
     const paramsArr = [] // 参数列表
     // 可能的空格 匹配参数 匹配可能的参数类型 遇到逗号停下来
-    const reg = /(\w+(,\s*\S+)+\s*[^,]+|\w+\s+[^,]+|[^,\s]+)/g
+    const reg = /(\w+(,\s*\w+)+\s*[^,]+|\w+\s+[^,]+|[^,\s]+)/g
     // 捕获函数参数
     while ((subRes = reg.exec(params))) {
       if (!subRes || subRes[1] === undefined || subRes[1] === '' || subRes[1] === 'undefined') break
@@ -107,7 +107,7 @@ class GetParams {
     }
     // 匹配每个返回参数及其类型
     let subRes
-    const subReg = /(\w+(\s*,\s*\S+)+\s+[^,]+|\w+\s+[^,]+|[^,\s]+)/g
+    const subReg = /(\w+(\s*,\s*\w+)+\s+[^,]+|\w+\s+[^,]+|[^,\s]+)/g
     while ((subRes = subReg.exec(bracketRet))) {
       if (!subRes || subRes[1] === undefined || subRes[1] === '' || subRes[1] === 'undefined') break
       // 去掉多余空格

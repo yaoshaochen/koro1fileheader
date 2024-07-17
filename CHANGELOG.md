@@ -17,6 +17,9 @@
 
 [配置](https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE) - 所有配置的详细描述的文档，用于查看详细介绍。
 
+### [V1.0.13]
+- fix: case-大于等于3个连续相同类型的入参或出参
+
 ### [V1.0.12]
 - fix: case-匹配结构体方法的返回值bug
 
