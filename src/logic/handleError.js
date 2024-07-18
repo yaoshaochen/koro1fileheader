@@ -26,7 +26,7 @@ process.on('uncaughtException', function (e) {
   const config = vscode.workspace.getConfiguration('fileheader') // 配置项默认值
   if (!config.configObj.showErrorMessage) return // 关闭报错
   const msg = JSON.stringify(e)
-  vscode.window.showErrorMessage('fileHeader: uncaughtException崩溃', msg)
+//   vscode.window.showErrorMessage('fileHeader: uncaughtException崩溃', msg)
   writeLog('fileHeader: uncaughtException崩溃', msg)
 })
 

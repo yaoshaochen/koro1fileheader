@@ -2,7 +2,7 @@
   "name": "korofileheader-for-go",
   "displayName": "koroFileHeader-for-go",
   "description": "fork koroFileHeader代码，主要针对golang",
-  "version": "1.0.13",
+  "version": "1.0.15",
   "publisher": "koro1fileheader-go",
   "scripts": {
     "build": "vsce package",

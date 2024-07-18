@@ -17,6 +17,13 @@
 
 [配置](https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE) - 所有配置的详细描述的文档，用于查看详细介绍。
 
+
+### [V1.0.15]
+- fix: change log
+
+### [V1.0.14]
+- feat: 取消错误信息弹窗，影响体验
+
 ### [V1.0.13]
 - fix: case-大于等于3个连续相同类型的入参或出参
 
